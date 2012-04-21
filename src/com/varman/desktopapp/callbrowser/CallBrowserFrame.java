@@ -35,11 +35,13 @@ public class CallBrowserFrame extends JFrame{
             new ActionListener() {
                 @Override
                 public void actionPerformed(ActionEvent e) {
-                    try {
-                      Desktop desktop = Desktop.getDesktop();
-                      desktop.browse(new URI(CAMDEV_URL));
-                    } catch (Exception ex) {
-                        ex.printStackTrace();
+                    if(Desktop.isDesktopSupported()) {
+                        try {
+                            Desktop desktop = Desktop.getDesktop();
+                            desktop.browse(new URI(CAMDEV_URL));
+                        } catch (Exception ex) {
+                            ex.printStackTrace();
+                        }
                     }
                 }
             }
